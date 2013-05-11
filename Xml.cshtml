@@ -1,11 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<tile>
-    <visual>
-        <binding template="TileWideText03">
-            <text id="1">@HttpContext.Current.Application["CouponText"]</text>
-        </binding>
-        <binding template="TileSquareText04">
-            <text id="1">@HttpContext.Current.Application["CouponText"]</text>
-        </binding>
-    </visual>
-</tile>
+﻿@{
+    var couponText = HttpContext.Current.Application["CouponText"] as string;
+}
+<?xml version="1.0" encoding="utf-8" ?>
+@if (couponText != "")
+{
+    <tile>
+        <visual>
+            <binding template="TileWideText03">
+                <text id="1">@couponText</text>
+            </binding>
+            <binding template="TileSquareText04">
+                <text id="1">@couponText</text>
+            </binding>
+        </visual>
+    </tile>
+}
