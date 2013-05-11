@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/_SiteLayout.cshtml";
+    Page.Title = "Coupons";
+
+    if (IsPost)
+    {
+        HttpContext.Current.Application["CouponText"] = Request["couponText"];
+    }
+}
+
+<hgroup class="title">
+    <h1>@Page.Title.</h1>
+    <h2>Manage the current tile sent to the ShopNow application</h2>
+</hgroup>
+
+<section>
+    <form method="post">
+        <header>
+            <h3>Current Coupon</h3>
+        </header>
+        <p>
+            <span class="label">Text:</span>
+            <input id="couponText" name="couponText" value="@HttpContext.Current.Application["CouponText"]"/>
+        </p>
+        <p> 
+            <input type="submit" value="Save"/>
+        </p>
+    </form>
+</section>
